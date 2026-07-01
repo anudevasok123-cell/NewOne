@@ -1,0 +1,16 @@
+name: Java Install
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    -name: Checkout repository
+      uses: actions/checkout@v2
+    -name: Install Java
+    - uses: actions/setup-java@v4
+      with:
+          distribution: temurin
+          java-version: '17'
+     -run: java -version
