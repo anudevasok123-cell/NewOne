@@ -1,1 +1,29 @@
+on:
+  push:
+    branches:
+      - develop
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Java Install
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Verify Java
+        run: java --version
+
+      - name: Maven Install
+        uses: batmahdi/setup-maven@v2
+        with:
+          maven-version: '3.9.9'
+
+      - name: Verify Maven
+        run: mvn --version
